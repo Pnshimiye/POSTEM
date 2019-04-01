@@ -65,10 +65,10 @@ class Profile(models.Model):
  
 
 
-class Comments(models.Model):
+class Reviews(models.Model):
     profile=models.ForeignKey(Profile,null=True)
-    comment = HTMLField()     
-    image = models.ForeignKey(Image, on_delete=models.CASCADE)
+    review = HTMLField()     
+    prject = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 
@@ -80,6 +80,6 @@ class Comments(models.Model):
         self.save()
     
     @classmethod
-    def get_comments_by_images(cls, id):
-        comments = Comments.objects.filter(image__pk = id)
-        return comments
+    def get_reviews_by_project(cls, id):
+        review = Reviews.objects.filter(project__pk = id)
+        return reviews
