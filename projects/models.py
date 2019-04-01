@@ -12,6 +12,9 @@ class Project(models.Model):
     likes = models.BooleanField(default=False)
     creation_date = models.DateTimeField(auto_now_add=False)
     technology = models.CharField(max_length=150)
+    design = models.IntegerField(blank=True,default=0)
+    usability = models.IntegerField(blank=True,default=0)
+    content= models.IntegerField(blank=True,default=0)
 
    
 
