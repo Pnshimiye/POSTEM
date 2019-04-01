@@ -2,40 +2,40 @@ from django.db import models
 from django.contrib.auth.models import User  
 from tinymce.models import HTMLField
 
-class Image(models.Model):
+class Project(models.Model):
     name = models.CharField(max_length = 50)
-    caption = models.CharField(max_length=100)     
-    profile = models.ForeignKey(User,on_delete=models.CASCADE)  
-    
-    upload_date = models.DateTimeField(auto_now_add=True)
+    description= models.CharField(max_length=100)     
+    profile = models.ForeignKey(User,on_delete=models.CASCADE)     
+    post_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='profile')
+    link=models.CharField(max_length=70)  
     likes = models.BooleanField(default=False)
+    creation_date = models.DateTimeField(auto_now_add=False)
+    technology = models.CharField(max_length=150)
+
    
 
     class Meta:
-        ordering = ('upload_date',)
+        ordering = ('post_date',)
 
-    def save_image(self):
+    def save_project(self):
         self.save()
+
     
     @classmethod
-    def update_caption(cls, update):
-        pass
+    def get_project_id(cls, id):
+        project = Project.objects.get(pk=id)
+        return project
     
     @classmethod
-    def get_image_id(cls, id):
-        image = Image.objects.get(pk=id)
-        return image
+    def get_profile_projects(cls, profile):
+        projects = Project.objects.filter(profile__pk = profile)
+        return projects
     
     @classmethod
-    def get_profile_images(cls, profile):
-        images = Image.objects.filter(profile__pk = profile)
-        return images
-    
-    @classmethod
-    def get_all_images(cls):
-        images = Image.objects.all()
-        return images
+    def get_all_projects(cls):
+        projects = Project.objects.all()
+        return projects
 
 
 class Profile(models.Model):
