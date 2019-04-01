@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load bootstrap3 %}
+<!Doctype <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+<body>
+    
+
+{% block content %}
+ 
+
+<center>
+<div class="row"id ="prof">
+
+    <div class="col-md-12" style="padding:50px";>
+        
+        <a href="" data-toggle="modal" data-target="#{{pic.id}}"><img src="{{profile_details.prof_pic.url}}" class="img-responsive" alt="Image"style="border-radius:50%;height: 325px;width: 250px"></a>
+        <p>{{pic.caption}}</p>
+        <h2 class="modal-title">{{pic.name}}</h2> 
+        <h2>{{profile_details.user.username }}</h2>
+        <a href=''>Followers 0   &nbsp;  following 0 </a> 
+        <hr style="color:black">
+        
+    </div>
+</div>
+
+<div id="{{pic.id}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+       
+          <div class="modal-content modal-lg">
+            <div class="modal-header">        
+    
+            </div>
+            <div class="modal-body">
+                <img src="{{profile_details.prof_pic.url}}" class="img-responsive" alt="Image" height="1000px">
+              <div class ="description">
+              <p>{{pic.caption}}</p>
+              <h2 class="modal-title">{{pic.name}}</h2>
+              <!-- <h6>{{pic.upload_date}}</h6> -->
+    
+    
+    
+              <ul class="list-inline">
+                  <li class="list-inline-item">  
+                      <a class="facebook-share-button" class="tooltip-test" title="Share on Facebook"
+                          href=" " target="_blank">
+                        
+                      </a>
+                  </li>
+              </ul>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+      
+      
+        </div>
+      </div>
+    </div>
+   
+</center>
+
+    {%for pic in images%}
+    <center>
+       
+        <div class="row" id="pictures"> 
+            
+         
+          <div class="col-sm-12">
+    
+    
+
+            <a href="" data-toggle= "modal" data-target="#{{pic.id}}"><img src="{{pic.image.url}}" class="img-responsive" alt="Image" height="700px" width="700px"></a> 
+            <h3>{{pic.caption}}</h3>
+            <h6>{{pic.upload_date}}</h6>
+          </div>    
+      
+      </div> 
+ 
+   
+</center>
+
+<div id="{{pic.id}}" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+   
+      <div class="modal-content modal-lg">
+        <div class="modal-header">        
+
+        </div>
+        <div class="modal-body">
+            <img src="{{pic.image.url}}" class="img-responsive" alt="Image" height="1000px">
+          <div class ="description">
+          <p>{{pic.caption}}</p>
+          <h2 class="modal-title">{{pic.name}}</h2>
+          <h6>{{pic.upload_date}}</h6>
+
+
+
+          <ul class="list-inline">
+              <li class="list-inline-item">  
+                  <a class="facebook-share-button" class="tooltip-test" title="Share on Facebook"
+                      href=" " target="_blank">
+                      Share
+                  </a>
+              </li>
+          </ul>
+        </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+  
+  
+    </div>
+  </div>
+</div>
+</div>
+    {%endfor%}
+
+
+ 
+{% endblock %}
+ 
+</body>
+</html>
