@@ -23,14 +23,17 @@
   {% endblock %}
  
 <body>
-<div class= "body"> 
+
+
+  
+
 
 {% block content %}
 
  
 
   
-{%for pic in images%}
+{%for project in projects%}
 
 <div calss="container">
  
@@ -43,10 +46,10 @@
             <div class="boxes">
             <div class="panel panel-heading ">
             <img scr="">
-            <h3>{{pic.profile.username}}</h3>
-            <a href="" data-toggle= "modal" data-target="#{{pic.id}}"><img src="{{pic.image.url}}" class="img-responsive" alt="Image" height="700px" width="700px"></a> 
-            <h3>{{pic.caption}}</h3>
-            <h6>{{pic.upload_date}}</h6>
+            <h3>{{project.profile.username}}</h3>
+            <a href="" data-toggle= "modal" data-target="#{{pic.id}}"><img src="{{project.image.url}}" class="img-responsive" alt="Image" height="700px" width="700px"></a> 
+            <h3>{{project.creation_date}}</h3>
+            <!-- <h6>{{pic.upload_date}}</h6> -->
           </div>
           </div>  
         </div>    
@@ -63,7 +66,7 @@
 
         </div>
         <div class="modal-body">
-            <img src="{{pic.image.url}}" class="img-responsive" alt="Image" height="1000px">
+            <img src="{{project.image.url}}" class="img-responsive" alt="Image" height="1000px">
           <div class ="description">
           <p>{{pic.caption}}</p>
           <h2 class="modal-title">{{pic.name}}</h2>
@@ -73,11 +76,7 @@
 
           <ul class="list-inline">
               <li class="list-inline-item">  
-                  <a class="facebook-share-button" class="tooltip-test" title="Share on Facebook"
-                      href="{% url 'reviews' pic.id %}" >Add a Comment
-                      
-                  </a>
-
+                
 
               </li>
           </ul>
@@ -92,7 +91,8 @@
     </div>
   </div>
 </div>
-</div>
+</body>
+ 
  
 
 {%endfor%}
