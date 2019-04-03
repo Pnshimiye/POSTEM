@@ -19,9 +19,9 @@ def profile (request):
  
     profile_details=  Profile.objects.get(user=current_user.id)    
     print(profile_details.prof_pic)
-    images=Image.get_profile_images(profile_details.user_id)
+    projects=Project.get_profile_projects(profile_details.user_id)
 
-    return render(request,'profile.html',{'profile':profile,'profile_details':profile_details,'images':images})
+    return render(request,'profile.html',{'profile':profile,'profile_details':profile_details,'projects':projects})
 
  
 
@@ -51,7 +51,7 @@ def edit_profile(request):
             edit = form.save(commit=False)
             edit.user = request.user
             edit.save()
-            return redirect('profile')
+            return redirect('home')
             print(edit)
     else:
         form = ProfileForm()
