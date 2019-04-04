@@ -1,0 +1,85 @@
+{%extends 'base.html'%} 
+<!Doctype <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+  <script src="main.js"></script>
+</head>
+<body style="text-align:center">
+ 
+{% block content %}
+
+<div class="container">
+
+  <div class="row">
+    {% if images %}
+      <h2 style="color:white;">Found {{profiles|length }} of searched term {{message}}</h2>
+    {% else %}
+      <h2  style="color:white;" > Found 0 profile for the search term {{message}}</h2>
+    {% endif %}
+
+  </div>
+
+  <div class="row">
+
+   {% if profile %}
+   {% for profile in projects %}
+   
+      <div class=" col-md-6 img">
+        
+         
+        <a href="" data-toggle= "modal" data-target="#{{image.id}}"><img src="{{project.image.url}}" class="img-responsive" alt="Image"height="700px" width="700px"></a> 
+        <h4 id='des'>{{project.name}}</h4>
+        
+         
+      </div>
+      <div id="{{image.id}}" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+       
+          <div class="modal-content modal-lg">
+            <div class="modal-header">
+            
+              <h2 class="modal-title">{{project.name}}</h2>
+              <h4> posted at {{project.post_date}}</h4>
+
+            </div>
+            <div class="modal-body">
+                <img src="{{project.image.url}}" class="img-responsive" alt="Image" height="1000px">
+              <div class ="description">
+              <p>{{pic.description}}</p>
+
+
+              <ul class="list-inline">
+                  <li class="list-inline-item">  
+                      <a class="facebook-share-button" class="tooltip-test" title="Share on Facebook"
+                          href=" " target="_blank">
+                          Share
+                      </a>
+                  </li>
+              </ul>
+            </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+      
+      
+        </div>
+      </div>
+    </div>
+
+   
+  
+  {% endfor %}
+  {% endif %}
+  </div>
+ 
+{% endblock %}
+</div>
+ 
+</body>
+</html>

@@ -30,9 +30,14 @@ class Project(models.Model):
         project = Project.objects.get(pk=id)
         return project
     
+    # @classmethod
+    # def get_profile_projects(cls, profile):
+    #     projects = Project.objects.filter(profile__pk = profile)
+    #     return projects
+
     @classmethod
-    def get_profile_projects(cls, profile):
-        projects = Project.objects.filter(profile__pk = profile)
+    def search_project_profile(cls,search_term):    
+        projects =cls.objects.filter(profile__profile_name__icontains =search_term)
         return projects
     
     @classmethod
