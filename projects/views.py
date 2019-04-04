@@ -5,6 +5,9 @@ from django.contrib.auth.decorators import login_required
 from .models import Project, Profile, Reviews
 from django.contrib.auth.models import User
 from .forms import ProjectForm, ProfileForm, ReviewForm
+from rest_framework.response import Response
+from rest_framework.views import APIView 
+from .serializer import ProjectSerializer
 
 @login_required(login_url='/accounts/login/')
 def home(request): 
@@ -56,7 +59,14 @@ def edit_profile(request):
     else:
         form = ProfileForm()
     return render(request,'edit_profile.html', {'form':form})
-   
+
+
+class ProjectList(APIView):
+    def get(self, request, format=None):
+        all_project = Project.objects.all()
+        serializers = ProjectSerializer(all_project, many=True)
+        return Response(serializers.data)
+
 
 
 # def comments(request,id):
@@ -86,3 +96,6 @@ def edit_profile(request):
 #     post = Image.objects.get(id=id)    
 #     image_comments= Comments.objects.filter(image=post)    
 #     return render(request,'home.html',{'image_comments':image_comments, 'post':post,'user':current_user})
+
+
+
