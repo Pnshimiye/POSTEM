@@ -68,7 +68,7 @@
    
 </center>
 
-    {%for pic in images%}
+    {%for pic in projects%}
     <center>
        
         <div class="row" id="pictures"> 
@@ -79,8 +79,9 @@
     
 
             <a href="" data-toggle= "modal" data-target="#{{pic.id}}"><img src="{{pic.image.url}}" class="img-responsive" alt="Image" height="700px" width="700px"></a> 
-            <h3>{{pic.caption}}</h3>
+            <h3>{{pic.name}}</h3>
             <h6>{{pic.upload_date}}</h6>
+            <p></p>
           </div>    
       
       </div> 
@@ -98,9 +99,10 @@
         <div class="modal-body">
             <img src="{{pic.image.url}}" class="img-responsive" alt="Image" height="1000px">
           <div class ="description">
-          <p>{{pic.caption}}</p>
+          <p>{{pic.description}}</p>
+          <a href="{{pic.link}}">{{pic.link}}</a>
           <h2 class="modal-title">{{pic.name}}</h2>
-          <h6>{{pic.upload_date}}</h6>
+          <h6>{{pic.post_date}}</h6>
 
 
 
