@@ -8,6 +8,7 @@ from .forms import ProjectForm, ProfileForm, ReviewForm
 from rest_framework.response import Response
 from rest_framework.views import APIView 
 from .serializer import ProjectSerializer
+from rest_framework import status
 
 @login_required(login_url='/accounts/login/')
 def home(request): 
@@ -61,11 +62,34 @@ def edit_profile(request):
     return render(request,'edit_profile.html', {'form':form})
 
 
+def search_results(request):
+
+    if 'profile' in request.GET and request.GET["profile"]:
+        search_term = request.GET.get("profile")
+        searched_profile = Image.search_project_profile(search_term)
+        message = f"{search_term}"
+
+        return render(request, 'All-pictures/profile.html',{"message":message,"images": searched_profile})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'All-pictures/category.html',{"message":message})
+
+
+
+
 class ProjectList(APIView):
     def get(self, request, format=None):
         all_project = Project.objects.all()
         serializers = ProjectSerializer(all_project, many=True)
         return Response(serializers.data)
+
+    def post(self, request, format=None):
+        serializers = ProjectSerializer(data=request.data)
+        if serializers.is_valid():
+            serializers.save()
+            return Response(serializers.data, status=status.HTTP_201_CREATED)
+        return Response(serializers.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 
