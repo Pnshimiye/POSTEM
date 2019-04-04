@@ -4,7 +4,7 @@ from tinymce.models import HTMLField
 
 class Project(models.Model):
     name = models.CharField(max_length = 50)
-    description= models.CharField(max_length=100)     
+    description= models.CharField(max_length=200)     
     profile = models.ForeignKey(User,on_delete=models.CASCADE)     
     post_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='profile/',blank=False)

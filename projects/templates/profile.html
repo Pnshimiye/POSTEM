@@ -15,7 +15,7 @@
 
 {% block content %}
  
-
+<div class="container" style="border:3px solid rgb(59, 51, 51);">
 <center>
 <div class="row"id ="prof">
 
@@ -25,9 +25,9 @@
          
         <h2 class="modal-title">{{pic.name}}</h2> 
         <h2>{{profile_details.user.username }}</h2>
-        <a href=''>Followers 0   &nbsp;  following 0 </a> 
-        <hr style="color:black">
-        
+        <!-- <a href=''>Followers 0   &nbsp;  following 0 </a>  -->
+        <hr style=" color:rgb(51, 40, 40);padding-top:10px; margin:25px auto 15px auto; border-collapse: collapse;" >
+        <h3 style="background-color:rgb(226, 221, 221);border:2px solid rgb(153, 144, 144)">{{profile_details.bio }}</h3>
     </div>
 </div>
 
@@ -128,6 +128,6 @@
 
  
 {% endblock %}
- 
+</div>
 </body>
 </html>
