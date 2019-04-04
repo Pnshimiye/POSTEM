@@ -14,51 +14,29 @@
         {% if user.is_authenticated %}
   <center> <ul id="up" style="list-style-type: none;
       
-      padding:0px;
+      padding:15px;
       overflow: hidden;
       background-color: rgb(32, 31, 31);
       position: fixed;
       top: 0;
       width: 110%;
-      height:80px;     
+      height:80px;
+      font-family:Gill Sans MT;
+      font-weight:bold;
+     
       ">
-      <li id="nav"><a class="navbar-brand" href="{% url 'home' %}" style="font-family: monospace;font-size:25px;font-weight: 40000;color: white; padding-top:23px;">Home</a></li>
-      <li id="nav"><a class="navbar-brand" href="{% url 'profile' %}" style= "font-family:monospace; font-size:25px;font-weight: 40000;color: white; padding-top:23px;">View My Profile</a></li>
-      <li id="nav"><a class="navbar-brand" href="{% url 'post_project' %}" style= "font-family: monospace;font-size:25px;font-weight: 40000;color: white; padding-top:23px;">upload an Image</a></li>
-      <li id="nav"><a class="navbar-brand" href="/logout" style= "font-family: monospace;font-size:25px;font-weight: 40000;color: white; padding-top:23px;">Logout</a></li>
-      <li class="dropdown"style= "height:50px padding:10px;float:right" >
-       
+      <li id="nav"><a class="navbar-brand" href="{% url 'home' %}" style="font-size:25px;font-weight: 40000;color: #bbbbbb; padding-top:23px;">Home</a></li>
+      <li id="nav"><a class="navbar-brand" href="{% url 'profile' %}" style= "font-size:25px;font-weight: 40000;color: #bbbbbb;; padding-top:23px;">View My Profile</a></li>
+      <li id="nav"><a class="navbar-brand" href="{% url 'post_project' %}" style= "font-size:25px;font-weight: 40000;color: #bbbbbb;; padding-top:23px;">Post a Project</a></li>
+    
+      <li id="nav"><a class="navbar-brand" href="/accounts/password/change"style= "font-size:25px;font-weight: 40000;color: #bbbbbb;; padding-top:23px;">Change Password</a></li>
+      <li id="nav"><a class="navbar-brand" href="{% url 'edit_profile' %}"style= " font-size:25px;font-weight: 40000;color:#bbbbbb; padding-top:23px;padding-right:560px;">Edit/create Profile</a></li>
+      <li id="nav"><a class="navbar-brand" href="/logout"style= "font-size:25px;font-weight: 40000;color: #bbbbbb; padding-top:23px;">Logout</a></li>
     </ul></center>
 
 
 
-    <div class="col-sm-6 col-md-6" id ="button"style="padding:4px;float:right" >
-        
-        <ul style= "height:50px; padding:10px;height:50px; padding:10px;float:right;" >
-          <li class="dropdown"style= "height:50px padding:10px;float:right" >
-            <a  style= "height:50px; font-size:20px;margin-top: -10px;float:right;list-style-type: none;"href="#" class="dropdown-toggle btn btn-default" data-toggle="dropdown" role="button" aria-expanded="true">Account
-                      <span class="caret"></span>
-                  </a>
-            <ul class="dropdown-menu" role="menu" style="color:white; background-color:black">
-              <li style="color:white;">
-                <a style="color:white;"    href="{% url 'edit_profile' %}">Edit/create Profile</a>
-              </li>
-              <li>
-                  
-                </li>
-              <li>
-                <a style="color:white;" href="/accounts/password/change">Change Password</a>
-              </li>
-              <li>
-                <a  style="color:white;"href="/logout">Logout</a>
-              </li>
-  
-              <li>
-                
-              </li>
-            </ul>
-          </li>
-        </ul>
+    
   
                  
         {% else %}
@@ -67,7 +45,7 @@
         </li>
   
         {% endif %}
-      </div>
+    
       
    
 
