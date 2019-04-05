@@ -39,9 +39,11 @@
   <h3 style="font-family:Gill Sans MT; font-size:40px;font-weight: bold;text-shadow: 2px 2px #ffffff;">Find vote and post your favorite applications</h3>
 </div>
 </div> 
-{%for project in projects%}
 
-<div cls="container">
+
+
+<div class="container">
+    {%for project in projects%}
  
      
       <center>
@@ -64,6 +66,7 @@
  
   
 </center>
+
 <div id="{{pic.id}}" class="modal fade" role="dialog">
     <div class="modal-dialog">
    
@@ -74,20 +77,19 @@
         <div class="modal-body">
             <img src="{{project.image.url}}" class="img-responsive" alt="Image" height="1000px">
           <div class ="description">
-          <p>{{pic.caption}}</p>
-          <h2 class="modal-title">{{pic.name}}</h2>
-          <h6>{{pic.upload_date}}</h6>
- 
+          <p>{{project.description}}</p>
+          <a href="{{project.link}}">{{project.link}}</a>
+          <h2 class="modal-title">{{project.name}}</h2>
+          <h6>{{project.post_date}}</h6>
+
 
 
           <ul class="list-inline">
               <li class="list-inline-item">  
-                
-
+                   
               </li>
           </ul>
         </div>
-       
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -97,7 +99,6 @@
     </div>
   </div>
 </div>
-
 </div>
 </body>
  
