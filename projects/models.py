@@ -6,7 +6,7 @@ from tinymce.models import HTMLField
 class Project(models.Model):
     name = models.CharField(max_length = 50)
     description= models.CharField(max_length=200)     
-    profile = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)     
+    profile = models.ForeignKey(User,on_delete=models.CASCADE,blank=True)      
     post_date = models.DateTimeField(auto_now_add=True)
     image = models.ImageField(upload_to='profile/',blank=False)
     link=models.CharField(max_length=70)  
@@ -36,14 +36,19 @@ class Project(models.Model):
         projects = Project.objects.filter(profile__pk = profile)
         return projects
 
-    @classmethod
-    def search_project_profile(cls,search_term):    
-        projects =cls.objects.filter(profile__profile_name__icontains =search_term)
-        return projects
+    # @classmethod
+    # def search_project_profile(cls,search_term):    
+    #     projects =cls.objects.filter(profile__profile_user__icontains =search_term)
+    #     return projects
     
     @classmethod
     def get_all_projects(cls):
         projects = Project.objects.all()
+
+    @classmethod
+    def search_project(cls,search_term):
+        projects= cls.objects.filter(name__icontains =search_term)
+        
         return projects
     # @classmethod
     # def add_vote(cls,user):
@@ -59,15 +64,13 @@ class Profile(models.Model):
     prof_pic = models.ImageField(upload_to='profile/',blank=False)
     bio = HTMLField()
     user = models.OneToOneField(User,on_delete=models.CASCADE, primary_key=True)
+    
 
 
     def save_profile(self):
         self.save()
     
-    @classmethod
-    def search_profile(cls,search_term):
-        cls.objects.filter(profile__profile_name__icontains =search_term)
-        return profile
+   
     
     # @classmethod
     # def get_by_id(cls, id):
@@ -83,6 +86,7 @@ class Reviews(models.Model):
     review = HTMLField()     
     prject = models.ForeignKey(Project, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+   
 
 
     def __str__(self):

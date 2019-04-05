@@ -66,10 +66,10 @@ def search_results(request):
 
     if 'profile' in request.GET and request.GET["profile"]:
         search_term = request.GET.get("profile")
-        searched_profile = Project.search_profile(search_term)
+        searched_project = Project.search_project(search_term)
         message = f"{search_term}"
 
-        return render(request, 'searched.html',{"message":message,"profile": searched_profile})
+        return render(request, 'searched.html',{"message":message,"projects": searched_project})
 
     else:
         message = "You haven't searched for any term"
