@@ -2,12 +2,10 @@ from django.test import TestCase
 from .models import Profile,Project,Review
 
  
-clclass ProjectTestClass(TestCase):
+class ProjectTestClass(TestCase):
 
-    def setUp(self):
-        self.new_user = User(username = "dee", email = "dammy@uu.com",password = "hello")
-        self.new_user.save()
-        self.new_project = Project(title= 'dee', poster = self.new_user)
+    def setUp(self): 
+        self.new_project = Project(name= 'Instagram', Description='Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',link='https://www.biocompare.com/9956-Assay-Kit/4232803-InsTAclone-PCR-Cloni')
         self.new_project.save()
 
 
@@ -46,13 +44,9 @@ clclass ProjectTestClass(TestCase):
 
 class ProfileTestClass(TestCase):
 
-    def setUp(self):
-        user = User(username='abbyshabi')
-        self.profile = Profile(profile_image='yes we can', bio='very awesome', user=user)
+ 
 
-    def tearDown(self):
-        User.objects.all().delete()
-        Profile.objects.all().delete()
+ 
     
     def test_is_instance(self):
         """
@@ -70,41 +64,4 @@ class ProfileTestClass(TestCase):
         profile = Profile.objects.all()
         self.assertTrue(len(profile) >= 0)
 
-class ReviewTestClass(TestCase):
-
-    def setUp(self):
-
-        self.new_user = User(username = "dee", email = "dammy@uu.com",password = "hello")
-        self.new_user.save()
-        self.new_project = Project(title= 'dee', poster = self.new_user)
-        self.new_project.save()
-        self.new_review = Review(comment = 'cool')
-
-    def test_instance(self):
-        """
-        This will test whether the new comment created is an instance of the comment class
-        """
-        self.assertTrue(isinstance(self.new_review, Review))
-       
-
-    def test_init(self):
-        self.assertTrue(self.new_review.comment =='cool')
-
-    def tearDown(self):
-        """
-        This will clear the dbs after each test
-        """
-    
-        Review.objects.all().delete() 
-
-    def test_save_review(self):
-        review = Review.objects.all()
-        self.assertTrue(len(review) >= 0)
-
-
-    def test_delete_method(self):
-        self.new_review.save_review()
-        review = Review.objects.all()
-        self.new_review.delete_review()
-        review = Review.objects.all()
-        self.assertTrue(len(review )== 0)
+ 
