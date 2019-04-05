@@ -1,6 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User  
 from tinymce.models import HTMLField
+ 
 
 class Project(models.Model):
     name = models.CharField(max_length = 50)
@@ -12,9 +13,9 @@ class Project(models.Model):
     likes = models.BooleanField(default=False)
     creation_date = models.DateTimeField(auto_now_add=True)
     technology = models.CharField(max_length=150)
-    design = models.IntegerField(blank=True,default=0)
-    usability = models.IntegerField(blank=True,default=0)
-    content= models.IntegerField(blank=True,default=0)
+    # design = RatingField(range=10,weight=10)
+    # usability = RatingField(range=10,weight=10)
+    # content=RatingField(range=10,weight=10)
 
    
 
@@ -30,10 +31,10 @@ class Project(models.Model):
         project = Project.objects.get(pk=id)
         return project
     
-    # @classmethod
-    # def get_profile_projects(cls, profile):
-    #     projects = Project.objects.filter(profile__pk = profile)
-    #     return projects
+    @classmethod
+    def get_profile_projects(cls, profile):
+        projects = Project.objects.filter(profile__pk = profile)
+        return projects
 
     @classmethod
     def search_project_profile(cls,search_term):    
@@ -44,6 +45,14 @@ class Project(models.Model):
     def get_all_projects(cls):
         projects = Project.objects.all()
         return projects
+    # @classmethod
+    # def add_vote(cls,user):
+    #     votes = Project.rating.add(score=1, user=request.user)
+    #     return projects
+
+    # @classmethod
+    # def get_votes(cls,user):
+    #     votes = Project.rating.get_rating_for_user(request.user) 
 
 
 class Profile(models.Model):
@@ -60,15 +69,15 @@ class Profile(models.Model):
         profile = Profile.objects.filter(user__username__icontains = name)
         return profile
     
-    @classmethod
-    def get_by_id(cls, id):
-        profile = Profile.objects.get(user = id)
-        return profile
+    # @classmethod
+    # def get_by_id(cls, id):
+    #     profile = Profile.objects.get(user = id)
+    #     return profile
 
-    @classmethod
-    def filter_by_id(cls, id):
-        profile = Profile.objects.filter(user = id).first()
-        return profile
+    # @classmethod
+    # def filter_by_id(cls, id):
+    #     
+    #     return profile
 
  
 
