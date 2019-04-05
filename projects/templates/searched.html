@@ -16,7 +16,7 @@
 <div class="container">
 
   <div class="row">
-    {% if images %}
+    {% if project %}
       <h2 style="color:white;">Found {{profiles|length }} of searched term {{message}}</h2>
     {% else %}
       <h2  style="color:white;" > Found 0 profile for the search term {{message}}</h2>
@@ -26,7 +26,7 @@
 
   <div class="row">
 
-   {% if profile %}
+   {% if project %}
    {% for project in projects %}
    
       <div class=" col-md-6 img">
@@ -50,7 +50,7 @@
             <div class="modal-body">
                 <img src="{{project.image.url}}" class="img-responsive" alt="Image" height="1000px">
               <div class ="description">
-              <p>{{pic.description}}</p>
+              <p>{{project.description}}</p>
 
 
               <ul class="list-inline">

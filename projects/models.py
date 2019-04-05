@@ -65,8 +65,8 @@ class Profile(models.Model):
         self.save()
     
     @classmethod
-    def search_profile(cls, name):
-        profile = Profile.objects.filter(user__username__icontains = name)
+    def search_profile(cls,search_term):
+        cls.objects.filter(profile__profile_name__icontains =search_term)
         return profile
     
     # @classmethod
@@ -74,11 +74,7 @@ class Profile(models.Model):
     #     profile = Profile.objects.get(user = id)
     #     return profile
 
-    # @classmethod
-    # def filter_by_id(cls, id):
-    #     
-    #     return profile
-
+    
  
 
 

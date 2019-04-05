@@ -33,9 +33,23 @@
       <li id="nav"><a class="navbar-brand" href="{% url 'edit_profile' %}"style= " font-size:25px;font-weight: 40000;color:#bbbbbb; padding-top:23px;margin-right:600px;">Edit/create Profile</a></li>
       <li id="nav"><a class="navbar-brand" href="/logout"style= "font-size:25px;font-weight: 40000;color: #bbbbbb; padding-top:23px;margin-right:0px;">Logout</a></li>
       <li id="nav"><h6 class="navbar-brand" style="font-size:25px;font-weight:bold;color: #bbbbbb; padding-top:14px;">{{user.username }}</h6> 
-    </ul></center>
+    </ul>
+  </center>
+
+  <div class="col-sm-4 col-md-4 navbar-right">
+
+    <form class="navbar-form" role="search" action="{% url 'search_results' %}">
 
 
+      <div class="input-group">
+        <input type="text" class="form-control" placeholder=" profile projects" name="profile" style="margin-top:-80px">
+        <div class="input-group-btn">
+          <button class="btn btn-default" type="submit"  style="margin-top:-127px"><i class="glyphicon glyphicon-search"></i></button>
+        </div>
+      </div>
+
+    </form>
+  </div>
 
     
   
